@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<title>Happy Birthday 🤍</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    height: 100vh;
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    animation: bgMove 12s infinite alternate;
+    color: #fff;
+}
+
+@keyframes bgMove {
+    from { background-position: left; }
+    to { background-position: right; }
+}
+
+.page {
+    display: none;
+    height: 100vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 25px;
+    box-sizing: border-box;
+}
+
+.active {
+    display: flex;
+}
+
+/* 🎁 KADO */
+.gift {
+    font-size: 120px;
+    cursor: pointer;
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+}
+
+button {
+    padding: 12px 30px;
+    border: none;
+    border-radius: 30px;
+    background: #1cb5e0;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 25px;
+}
+
+/* ❤️ FOTO LOVE */
+.love-container {
+    display: flex;
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.love {
+    width: 170px;
+    height: 170px;
+    overflow: hidden;
+    clip-path: path(
+      "M85 155 
+       C10 105 10 40 50 40 
+       C70 40 85 60 85 60 
+       C85 60 100 40 120 40 
+       C160 40 160 105 85 155 Z"
+    );
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
+
+.love img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* animasi */
+.fade {
+    animation: fadeIn 1.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; }
+}
+
+/* 📝 UCAPAN */
+#wishPage {
+    overflow-y: auto;
+}
+
+.long-text {
+    max-width: 700px;
+    line-height: 1.9;
+    margin-bottom: 40px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active">
+    <div class="gift" onclick="openPhotos()">🎁</div>
+    <p>Klik kadonya ya 🤍</p>
+</div>
+
+<!-- PAGE 2 -->
+<div class="page" id="photosPage">
+    <h2 class="fade">My Favorite Person 🖤</h2>
+
+    <div class="love-container fade">
+        <div class="love"><img src="image/him1.jpg"></div>
+        <div class="love"><img src="image/him2.jpg"></div>
+        <div class="love"><img src="image/him3.jpg"></div>
+    </div>
+
+    <button onclick="openWish()">Lanjut</button>
+</div>
+
+<!-- PAGE 3 UCAPAN -->
+<div class="page" id="wishPage">
+    <h1 class="fade">Happy Birthday 🎉</h1>
+    <h2 class="fade">Raden Kuncoro Jati Perwira Negara</h2>
+
+    <p class="long-text fade">
+        Happy Birthday Sayanggnya akuuu! 🎉<br><br>
+
+        Doanya ya… kamu doa sendirilah, udah gede gausah manja 😏.<br><br>
+
+        Ini aku pilih buat kamu pakai nge-gym. Waktu itu kan kamu sempat bilang
+        pengen nge-gym pakai kaos singlet, jadi nih aku beliin — dipakai terus yaa hihihi 🤭.
+        Aku milihnya pakai feeling lho, jadi semoga muat ya 😅.<br><br>
+
+        I’m sorry I can’t give this to you in person 🥹,
+        but I still wanted to give you something so you know that
+        I always think of you and care about you.
+        I hope this little gift makes you smile today,
+        just like I always smile whenever I think of you 🤍🤍.<br><br>
+
+        I hope at 24, you’re always happy and healthy.
+        I also hope all the things on your wish list come true this year,
+        and that every effort you make brings you beautiful results.
+        And of course, I hope you love me even more day by day 😋.<br><br>
+
+        Love you a lot 🤍🤍<br>
+        From your beloved gf ✨
+    </p>
+
+    <button onclick="openMe()">Lanjut</button>
+</div>
+
+<!-- PAGE 4 -->
+<div class="page">
+    <h2 class="fade">From Your Girlfriend 💖</h2>
+    <img src="image/me.jpg" style="width:220px;border-radius:25px;" class="fade">
+</div>
+
+<audio id="bgm" src="music.mp3"></audio>
+
+<script>
+function openPhotos() {
+    document.querySelectorAll('.page')[0].classList.remove("active");
+    document.getElementById("photosPage").classList.add("active");
+    document.getElementById("bgm").play();
+}
+
+function openWish() {
+    document.getElementById("photosPage").classList.remove("active");
+    document.getElementById("wishPage").classList.add("active");
+}
+
+function openMe() {
+    document.getElementById("wishPage").classList.remove("active");
+    document.querySelectorAll('.page')[3].classList.add("active");
+}
+</script>
+
+</body>
+</html>
